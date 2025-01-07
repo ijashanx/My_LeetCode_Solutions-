@@ -1,1 +1,64 @@
+# QUESTION STATEMENT 
 
+Given an array of string words, return all strings in words that is a substring of another word. You can return the answer in any order.
+
+A substring is a contiguous sequence of characters within a string
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Brute force details 
+
+import java.util.*;
+public class SubstringWords {
+    public static List<String> findSubstrings(String[] words) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            for (int j = 0; j < words.length; j++) {
+                if (i != j && words[j].contains(words[i])) {
+                    result.add(words[i]);
+                    break;  // Avoid duplicates
+                }
+            }
+        }
+        return result;
+    }
+
+# Complexities of brute force approach 
+
+Time Complexity: 
+𝑂(𝑛2×𝑚2)
+
+Space Complexity: 
+𝑂(𝑛)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Approach Used 
+
+1.)Iterate through the words and add all substrings to a HashSet.
+2.)Then, check if the current word exists in the set of substrings of other words.
+
+# CODE (in java) (OPTIMIZED SOLUTION)
+
+class Solution {
+    public List<String> stringMatching(String[] words) {
+        Set<String> substrings=new HashSet<>();
+        List<String> result=new ArrayList<>();
+        for(String word:words){
+            for(String otherWord:words){
+                if(!word.equals(otherWord) && otherWord.contains(word)){
+                    substrings.add(word);
+                }
+            }
+        }
+        result.addAll(substrings);
+        return result;
+    }
+}
+
+# Complexities
+
+Time Complexity: 
+𝑂(𝑛2×𝑚)
+Space Complexity: 
+𝑂(𝑛×𝑚)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
