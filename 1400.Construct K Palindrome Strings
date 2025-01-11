@@ -1,0 +1,37 @@
+# Code Question 
+
+Given a string s and an integer k, return true if you can use all the characters in s to construct k palindrome strings or false otherwise.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Solution (in java) 
+
+We can also use HashMap for better efficiency of counting frequency of alphabets.
+
+class Solution {
+    public boolean canConstruct(String s, int k) {
+        if(k>s.length()){ 
+            return false;
+        }
+        int[] freq=new int[26]; 
+        for(char c:s.toCharArray()){ 
+            freq[c-'a']++;
+        }
+        int oddCount=0;
+        for(int count:freq){
+            if(count%2!=0){
+                oddCount++;
+            }
+        }
+        return oddCount<=k;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Complexities 
+Time-complexity = O(n)+o(1)=o(n)
+Space-complexity=o(1)
+
+
+
