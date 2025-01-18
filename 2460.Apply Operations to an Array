@@ -49,5 +49,5 @@ class Solution {
 
 # Complexity 
 
-Time Complexity :- O(n) + O(n) = O(n) // both the function are sequentially 
+Time Complexity :- O(n) + O(n) = O(n) // both the function are sequentially .
 Space Complexity :- O(1)
