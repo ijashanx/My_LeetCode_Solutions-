@@ -1,1 +1,39 @@
+# Code Statement 
+
+An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
+
+Given an integer n, return the nth ugly number.
+
+# Code solution (in java)
+
+class Solution {
+    public int nthUglyNumber(int n) {
+       int[] uglyNumbers = new int[n];
+       uglyNumbers[0]=1;
+       int i2=0,i3=0,i5=0;
+       int next2=2,next3=3,next5=5; 
+       for(int i=1;i<n;i++){ //O(n)
+        int nextUgly=Math.min(next2,Math.min(next3,next5)); //O(1)
+        uglyNumbers[i]=nextUgly; 
+        if(nextUgly==next2){  
+            i2++;                      // O(n)
+            next2 = uglyNumbers[i2] * 2;
+        }
+        if(nextUgly==next3){
+            i3++;
+            next3 = uglyNumbers[i3] * 3;
+        }
+        if(nextUgly==next5){
+            i5++;
+            next5 = uglyNumbers[i5] * 5;
+        }
+       }
+       return uglyNumbers[n-1];
+    }
+}
+
+# Complexities
+
+1.)Time complexity :- O(n)+O(n)+O(1) :- O(n) 
+2.)Space complxity :-O(n)+O(1)=O(n) // dynamic array will store 'n' numbers . -> it requires constant number of variables (O(1)).
 
