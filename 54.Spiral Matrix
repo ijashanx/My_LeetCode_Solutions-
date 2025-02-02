@@ -1,1 +1,50 @@
+# CODE QUESTION 
+
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Solution(in java)
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans=new ArrayList<>();
+        int n=matrix.length; // number of rows
+        int m=matrix[0].length;//number of columns
+        int top=0,right=m-1,bottom=n-1,left=0;
+        while(top<=bottom && left<=right){
+            // for moving from left to right
+            for(int i=left;i<=right;i++){
+                ans.add(matrix[top][i]);
+            }
+             top++;
+            //for moving top to bottom
+            for(int i=top;i<=bottom;i++){
+                ans.add(matrix[i][right]);
+            }
+            right--;
+            // for moving top to bottom
+            if(bottom>=top){
+                for(int i=right;i>=left;i--){
+                    ans.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+            //for moving left to right
+            if(left<=right){
+                for(int i=bottom;i>=top;i--){
+                    ans.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Complexity:-
+1.)Time complexity:-O(nXm)
+2.)Space complexity:-O(1)
 
