@@ -1,1 +1,39 @@
+# Code question 
 
+Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Code Solution (in java)
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+    int n=matrix.length;
+    int m=matrix[0].length;
+    int rowIdx=0;
+    int colIdx=m-1;
+    while(rowIdx<n && colIdx>=0){
+        int element=matrix[rowIdx][colIdx];
+        if(target==element){
+            return true;
+        }
+        else if(element<target){
+            rowIdx++;
+        }
+        else{
+            colIdx--;
+        }
+    }
+    return false;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Complexities
+
+1.)Time complexity :- O(n+m) 
+2.)Spacr complexity :-O(1)
