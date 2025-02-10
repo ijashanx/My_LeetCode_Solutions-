@@ -1,1 +1,26 @@
+# Code statement 
 
+Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Code solution (in java )
+
+class Solution {
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums); 
+        int  n=nums.length;
+        int product1=nums[n-1]*nums[n-2]*nums[n-3];//product of largest three numbers
+        int product2=nums[0]*nums[1]*nums[n-1]; // product of smallest two numbers and one largest number 
+        return Math.max(product1,product2); //maximum of both the products will be returned. 
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Complexities
+
+1.)Time complexity :- O(n log n)
+2.)Space complexity :- O(1)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
