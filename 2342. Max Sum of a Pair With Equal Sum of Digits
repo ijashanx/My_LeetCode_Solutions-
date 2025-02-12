@@ -1,1 +1,48 @@
+# Code Statement 
 
+You are given a 0-indexed array nums consisting of positive integers. You can choose two indices i and j, such that i != j,
+and the sum of digits of the number nums[i] is equal to that of nums[j].
+
+Return the maximum value of nums[i] + nums[j] that you can obtain over all possible indices i and j that satisfy the conditions.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Code solution (in java)
+
+class Solution {
+    public int getSum(int num){
+        int sum=0;
+        while(num>0){
+          sum+=num%10;
+          num/=10;
+        }
+        return sum;
+    }
+    public int maximumSum(int[] nums) {
+        Arrays.sort(nums);
+        int maxSum = -1;
+        for (int i = nums.length - 1; i > 0; i--) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (getSum(nums[i]) == getSum(nums[j])) {
+                    maxSum = Math.max(maxSum, nums[i] + nums[j]);
+                    break;
+                }
+            }
+        }
+        
+        return maxSum;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Complexity 
+
+1.) Time complexity :- 
+
+Best Case :- O(n^2)
+Worst Case :- O(n log n)+O(n)
+
+2.) Space complexity :- O(1)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
