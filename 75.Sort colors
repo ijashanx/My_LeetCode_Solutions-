@@ -1,1 +1,47 @@
+# Code statement 
 
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, 
+with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Code solution ( in java)
+
+class Solution {
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public void sortColors(int[] arr) {
+        int n=arr.length;
+        int low=0,mid=0,high=n-1;
+        while(high>=mid){
+            if(arr[mid]==0){
+                swap(arr, mid, low);  
+                mid++;
+                low++;
+            }
+            else if(arr[mid]==1){
+                mid++;
+            }
+            else{
+                swap(arr, mid, high);
+                high--;
+            }
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Code complexity
+
+1.)Time complexity :- O(n)
+2.)Space complexity :- O(1)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
