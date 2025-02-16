@@ -1,0 +1,26 @@
+if (intervals.length <= 1) return intervals;
+
+        // Step 1: Sort intervals by start time
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+        // Step 2: Use an array to store merged intervals
+        int n = intervals.length;
+        int[][] merged = new int[n][2]; // Maximum size needed
+        int idx = 0; // Tracks position in merged array
+
+        // Step 3: Initialize the first interval
+        merged[0] = intervals[0];
+
+        for (int i = 1; i < n; i++) {
+            if (intervals[i][0] <= merged[idx][1]) { 
+                // Merge overlapping intervals
+                merged[idx][1] = Math.max(merged[idx][1], intervals[i][1]);
+            } else {
+                // Move to next position and store the new interval
+                idx++;
+                merged[idx] = intervals[i];
+            }
+        }
+
+        // Step 4: Copy only valid merged intervals into the final result
+        return Arrays.copyOf(merged, idx + 1);
