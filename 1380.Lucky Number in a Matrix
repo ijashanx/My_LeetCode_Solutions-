@@ -1,0 +1,35 @@
+class Solution {
+    public List<Integer> luckyNumbers(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        int[] minRow = new int[m];  // Store min elements of each row
+        int[] maxCol = new int[n];  // Store max elements of each column
+
+        // Initialize minRow with maximum possible values and maxCol with minimum possible values
+        for (int i = 0; i < m; i++) {
+            minRow[i] = Integer.MAX_VALUE;
+        }
+        for (int j = 0; j < n; j++) {
+            maxCol[j] = Integer.MIN_VALUE;
+        }
+
+        // Find min values in each row
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                minRow[i] = Math.min(minRow[i], matrix[i][j]);
+                maxCol[j] = Math.max(maxCol[j], matrix[i][j]);
+            }
+        }
+
+        // Find lucky numbers
+        List<Integer> luckyNumbers = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == minRow[i] && matrix[i][j] == maxCol[j]) {
+                    luckyNumbers.add(matrix[i][j]);
+                }
+            }
+        }
+
+        return luckyNumbers;
+    }
+}
