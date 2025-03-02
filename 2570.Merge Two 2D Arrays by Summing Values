@@ -1,0 +1,69 @@
+# Code statement 
+
+You are given two 2D integer arrays nums1 and nums2.
+
+nums1[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.
+nums2[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.
+Each array contains unique ids and is sorted in ascending order by id.
+
+Merge the two arrays into one array that is sorted in ascending order by id, respecting the following conditions:
+
+Only ids that appear in at least one of the two arrays should be included in the resulting array.
+Each id should be included only once and its value should be the sum of the values of this id in the two arrays. If the id does not exist in one of the two arrays, 
+then assume its value in that array to be 0.
+Return the resulting array. The returned array must be sorted in ascending order by id.
+
+================================================================================================================================================================================
+
+# Code solution (in java)
+
+class Solution {
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+        int n=nums1.length,m=nums2.length;
+        int[][]temp=new int[n+m][2];
+        int i=0,j=0,k=0;
+        while(i<n && j<m){
+            if(nums1[i][0]==nums2[j][0]){
+                temp[k][0]=nums1[i][0];
+                temp[k][1]=nums1[i][1]+nums2[j][1];
+                i++;j++;
+            }
+            else if(nums1[i][0]<nums2[j][0]){
+                temp[k][0]=nums1[i][0];
+                temp[k][1]=nums1[i][1];
+                i++;
+            }
+            else{
+                temp[k][0]=nums2[j][0];
+                temp[k][1]=nums2[j][1];
+                j++;
+            }
+            k++;
+        }
+        while(j<m){
+            temp[k][0]=nums2[j][0];
+            temp[k][1]=nums2[j][1];
+            j++;k++;
+        }
+        while(i<n){
+            temp[k][0]=nums1[i][0];
+            temp[k][1]=nums1[i][1];
+            i++;k++;
+        }
+        int[][] result=new int[k][2];
+        for(int x=0;x<k;x++){
+            result[x][0]=temp[x][0];
+            result[x][1]=temp[x][1];
+        }
+        return result;
+    }
+}
+
+==============================================================================================================================================================================
+
+# Code complexity :- 
+
+1.)Time complexity :- 0(n+m)
+2.)Space complexity:- O(n+m)
+
+==============================================================================================================================================================================
