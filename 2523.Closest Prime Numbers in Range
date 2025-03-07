@@ -1,0 +1,52 @@
+# Code statement 
+
+Given two positive integers left and right, find the two integers num1 and num2 such that:
+left <= num1 < num2 <= right .
+Both num1 and num2 are prime numbers.
+num2 - num1 is the minimum amongst all other pairs satisfying the above conditions.
+Return the positive integer array ans = [num1, num2]. If there are multiple pairs satisfying these conditions, 
+return the one with the smallest num1 value. If no such numbers exist, return [-1, -1].
+
+=================================================================================================================================================================================
+
+# Code solution (in java )
+class Solution {
+    public int[] closestPrimes(int left, int right) {
+       int[] primes=new int[right-left+1];
+       int count=0;
+       for(int i=left;i<=right;i++){
+        if(isPrime(i)){
+            primes[count++]=i;
+        }
+       }
+       if(count<2) return new int[]{-1,-1};
+       int num1=primes[0],num2=primes[1],mindiff=num2-num1;
+       for(int i=1;i<count-1;i++){
+        int diff=primes[i+1]-primes[i];
+        if(diff<mindiff){
+            mindiff=diff;
+            num1=primes[i];
+            num2=primes[i+1];
+        }
+       }
+       return new int[]{num1,num2};
+    }
+       public static boolean isPrime(int num){
+        if(num<2) return false;
+        for(int i=2;i*i<=num;i++){
+            if(num%i==0) return false;
+        }
+        return true;
+       
+    }
+}
+
+===============================================================================================================================================================================
+
+# Code Complexities :- 
+
+1.) Time complexity :- O(n log logn)
+2.) Space complexity :- O(n)
+
+================================================================================================================================================================================
+
