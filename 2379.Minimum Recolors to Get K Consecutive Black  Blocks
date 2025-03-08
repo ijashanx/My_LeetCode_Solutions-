@@ -1,0 +1,41 @@
+# Code statement 
+
+You are given a 0-indexed string blocks of length n, where blocks[i] is either 'W' or 'B', representing the color of the ith block. 
+The characters 'W' and 'B' denote the colors white and black, respectively.
+
+You are also given an integer k, which is the desired number of consecutive black blocks.
+
+In one operation, you can recolor a white block such that it becomes a black block.
+
+Return the minimum number of operations needed such that there is at least one occurrence of k consecutive black blocks.
+
+=================================================================================================================================================================================
+
+# Code solution (in java )
+
+class Solution {
+    public int minimumRecolors(String blocks, int k) {
+        int n = blocks.length();
+        int minOps = Integer.MAX_VALUE;
+        for (int i = 0; i <= n - k; i++) {
+            int countW = 0;
+            for (int j = i; j < i + k; j++) {
+                if (blocks.charAt(j) == 'W') {
+                    countW++;
+                }
+            }
+            minOps = Math.min(minOps, countW);
+        }
+        
+        return minOps;
+    }
+}
+
+===============================================================================================================================================================================
+
+# Code complexity :-
+
+1.)Space complexity :- O(1)
+2.)Time complexity :-O(n.k)
+
+===============================================================================================================================================================================
