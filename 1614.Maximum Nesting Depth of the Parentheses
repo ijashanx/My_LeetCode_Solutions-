@@ -1,0 +1,36 @@
+# STATEMENT OF PROBLEM 
+
+Given a valid parentheses string s, return the nesting depth of s. The nesting depth is the maximum number of nested parentheses.
+
+ =================================================================================================================================================================================
+
+ ## SOLUTION OF PROBLEM 
+
+ class Solution {
+    public int maxDepth(String s) {
+        int maxDepth=0;
+        int currentDepth=0;
+        for(char c:s.toCharArray()){
+            if(c=='('){
+                currentDepth++;
+                maxDepth=Math.max(currentDepth,maxDepth);
+            }
+            else{
+                if(c==')'){
+                currentDepth--;
+                }
+
+            }
+        }
+        return maxDepth;
+    }
+}
+
+=================================================================================================================================================================================
+
+## COMPLEXITIES:-
+
+1.)TIME COMPLEXITY :- O(n)
+2.)SPACE COMPLEXITY :-o(1)
+
+=================================================================================================================================================================================
