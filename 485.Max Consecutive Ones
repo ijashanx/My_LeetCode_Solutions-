@@ -1,0 +1,34 @@
+# STATEMENT OF PROBLEM
+
+Given a binary array nums, return the maximum number of consecutive 1's in the array.
+
+==================================================================================================================================================================================
+
+## SOLUTION IN JAVA 
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int max_cons=0;
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==1){
+                count++;
+                max_cons=Math.max(max_cons,count);
+            }
+            else{
+                count=0;
+            }
+        }
+        return max_cons;
+        
+    }
+}
+
+==================================================================================================================================================================================
+
+## COMPLEXITIES :-
+
+1.)TIME COMPLEXITY :- O(n)
+2.)SPACE COMPLEXITY :-O(1)
+
+==================================================================================================================================================================================
