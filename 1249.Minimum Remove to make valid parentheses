@@ -1,0 +1,55 @@
+# STATEMENT OF PROBLEM 
+
+Given a string s of '(' , ')' and lowercase English characters.
+
+Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
+
+Formally, a parentheses string is valid if and only if:
+
+It is the empty string, contains only lowercase characters, or
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+=================================================================================================================================================================================
+
+## SOLUTION OF PROBLEM ( IN JAVA ) 
+
+class Solution {
+    public String minRemoveToMakeValid(String s) {
+        StringBuilder ans=new StringBuilder();
+        int count=0;
+        for(char ch: s.toCharArray()){
+            if(Character.isLetter(ch)){
+                ans.append(ch);
+            }
+            if(ch=='('){
+                ans.append(ch);
+                count++;
+            }
+            if(ch==')'){
+                if(count>0){
+                    ans.append(ch);
+                    count--;
+                }
+            }
+        }
+        StringBuilder res=new StringBuilder();
+        for(int i=ans.length()-1;i>=0;i--){
+            char ch=ans.charAt(i);
+            if(ch=='(' && count>0){
+                count--;
+                continue;
+            }
+            res.append(ch);
+        }
+        
+        return res.reverse().toString();
+    }
+}
+=================================================================================================================================================================================
+
+## CODE COMPLEXITIES :-
+
+1.) TIME COMPLEXITY :- O(n)
+2.) SPACE COMPLEXITY :- O(n)
+
+=================================================================================================================================================================================
