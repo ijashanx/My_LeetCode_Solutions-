@@ -1,0 +1,39 @@
+# STATEMENT OF PROBLEM 
+
+You are given two strings s1 and s2 of equal length consisting of letters "x" and "y" only. Your task is to make these two strings equal to each other. 
+You can swap any two characters that belong to different strings, which means: swap s1[i] and s2[j].
+
+Return the minimum number of swaps required to make s1 and s2 equal, or return -1 if it is impossible to do so.
+
+==================================================================================================================================================================================
+
+## SOLUTION OF PROBLEM ( IN JAVA )
+
+class Solution {
+    public int minimumSwap(String s1, String s2) {
+        int xy=0 , yx=0;
+        for(int i=0;i<s1.length();i++){
+            char a=s1.charAt(i);
+            char b=s2.charAt(i);
+            if(a=='x' && b=='y'){
+                xy++;
+            }
+            else if(a=='y' && b=='x'){
+                yx++;
+            }
+        }
+        if((xy+yx)%2!=0){
+            return -1;
+        }
+        return (xy/2)+(yx/2)+(xy%2)*2;
+    }
+}
+
+==================================================================================================================================================================================
+
+## COMPLXITIES:-
+
+1.) TIME COMPLEXITY :- O(n)
+2.) SPACE COMPLEXITY :- O(1)
+
+==================================================================================================================================================================================
