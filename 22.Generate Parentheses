@@ -1,0 +1,49 @@
+# STATEMENT OF PROBLEM 
+
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+==================================================================================================================================================================================
+
+## SOLUTION OF PROBLEM (IN JAVA )
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> res=new ArrayList<String>();
+        recurse(res,0,0,"",n);
+        return res;
+    }
+    public void recurse(List<String> res,int left,int right,String s,int n){
+        if(s.length()==n*2){
+            res.add(s);
+            return ;
+        }
+        if(left<n){
+            recurse(res,left+1,right,s+"(",n);
+        }
+        if(left>right){
+            recurse(res,left,right+1,s+")",n);
+        }
+    }
+}
+
+==================================================================================================================================================================================
+
+## COMPLEXITIES:-
+
+1.)TIME COMPLEXITY :- O(2^2n) or O(4^n / √n) (Catalan Number)
+2.)SPACE COMPLEXITY :- O(n) recursion + O(4^n / √n * n) result :- O(4^n / √n)
+
+==================================================================================================================================================================================
+
+## CATALAN NUMBER :-
+
+Catalan numbers are defined as a mathematical sequence that consists of positive integers, which can be used to find the number of possibilities of various combinations.  
+
+The nth term in the sequence denoted Cn, is found in the following formula:-
+                                               
+                                                                     
+                                                                         (2n)!
+                                                                       ----------
+                                                                        n!(n+1)!
+​
+==================================================================================================================================================================================
+              
