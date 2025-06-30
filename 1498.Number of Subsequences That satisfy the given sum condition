@@ -1,0 +1,45 @@
+# STATEMENT OF PROBLEM 
+
+You are given an array of integers nums and an integer target.
+
+Return the number of non-empty subsequences of nums such that the sum of the minimum and maximum element on it is less or equal to target. Since the answer may be too large,
+return it modulo 109 + 7.
+
+===============================================================================================================================================================================
+
+## STATEMENT SOLUTON ( IN JAVA )
+
+class Solution {
+    public int numSubseq(int[] nums, int target) {
+        Arrays.sort(nums);
+        int mod=1_000_000_007;
+        int n=nums.length;
+        // create pow array containing pow of 2.
+        int[] pow2=new int[n];
+        pow2[0]=1;
+        for(int i=1;i<n;i++){
+            pow2[i]=(pow2[i-1]*2)%mod;
+        }
+        int count=0;
+        int i=0,j=n-1;
+        while(i<=j){
+            if(nums[i]+nums[j]<=target){
+               count=(count+pow2[j-i])%mod;
+               i++;
+            }else{
+                j--;
+            }
+           
+        }
+        return count;
+    }
+}
+
+===============================================================================================================================================================================
+
+## CODE COMPLEXITY :- 
+
+1.) TIME COMPLEXITY :-O(n log n)
+2.) SPACE COMPLEXITY :- O(n)
+
+===============================================================================================================================================================================
