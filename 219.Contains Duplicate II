@@ -1,0 +1,29 @@
+## STATEMENT OF PROBLEM 
+
+Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+
+==================================================================================================================================================================================
+
+## SOLUTION OF PROBLEM ( IN JAVA )
+
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<=i+k && j<nums.length;j++){
+                if(nums[i]==nums[j]){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+==================================================================================================================================================================================
+
+## CODE COMPLEXITIES :- 
+
+1.) TIME COMPLEXITY :- O(n^2)
+2.) SPACE COMPLEXITY :- O(1)
+
+==================================================================================================================================================================================
