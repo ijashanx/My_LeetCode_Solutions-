@@ -12,9 +12,9 @@ This repo is part of my daily coding practice and learning journey. 🚀
 
       | Difficulty | Solved |
       |------------|--------|
-      | Easy       |100+    |
-      | Medium     | 95+    |
-      | Hard       | 3      |     
+      | Easy       |130+    |
+      | Medium     |100+    |
+      | Hard       | 5      |     
       
 ## My badge links 
     50 days badge 2025
