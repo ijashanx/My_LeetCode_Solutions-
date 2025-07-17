@@ -1,4 +1,10 @@
-``` java 
+## PROBLEM STATEMENT 
+
+Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+
+===============================================================================================================================================================================
+
+## SOLUTION ( IN JAVA ) :-
 
 class Solution {
     public List<List<String>> partition(String s) {
@@ -28,4 +34,12 @@ class Solution {
         return true ;
     }
 }
-```
+
+===============================================================================================================================================================================
+
+## CODE COMPLEXITY :- 
+
+1.) TIME COMPLEXITY :- O(n*2^n)
+2.) SPACE COMPLEXITY :- O(n*2^n)
+
+===============================================================================================================================================================================
