@@ -1,0 +1,62 @@
+## PROBLEM STATEMENT 
+
+A fancy string is a string where no three consecutive characters are equal.
+
+Given a string s, delete the minimum possible number of characters from s to make it fancy.
+
+Return the final string after the deletion. It can be shown that the answer will always be unique.
+
+=================================================================================================================================================================================
+
+## SOLUTION ( IN JAVA )
+
+### APPROACH :- 01 
+
+class Solution {
+    public String makeFancyString(String s) {
+        StringBuilder result=new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            int len=result.length();
+            if(len>=2 && result.charAt(len-1)==ch && result.charAt(len-2)==ch){
+               continue;
+            }
+            result.append(ch);
+        }
+        return result.toString();
+    }
+}
+
+### APPROACH :- 02
+
+class Solution {
+    public String makeFancyString(String s) {
+        StringBuilder result=new StringBuilder();
+        int count=0;
+        char prev=0;
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(c==prev){
+                count++;
+            }
+            else{
+                count=1;
+            }
+
+            if(count<=2){
+                result.append(c);
+            }
+            prev=c;
+        }
+        return result.toString();
+    }
+}
+
+=================================================================================================================================================================================
+
+## CODE COMPLEXITY (both codes have same complexity ):-
+
+1.) TIME COMPLEXITY :- O(n)
+2.) SPACE COMPLEXITY :- O(n)
+
+=================================================================================================================================================================================
