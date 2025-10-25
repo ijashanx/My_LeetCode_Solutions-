@@ -1,0 +1,23 @@
+## Code (in java )
+
+class Solution {
+    public int totalMoney(int n) {
+        int weekStart=1;
+        int day=0;
+        int total=0;
+       for(int i=1;i<=n;i++){
+        total+=weekStart+day;
+        day++;
+        if(day==7){
+            day=0;
+            weekStart++;
+        }
+       }
+       return total;
+    }
+}
+
+## Code complexities :-
+
+1. Time complexity :- O(n)
+2. Space complexity :- O(1)
