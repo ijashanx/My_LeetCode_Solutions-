@@ -1,0 +1,16 @@
+## Code ( Java )
+
+class Solution {
+    public int smallestNumber(int n) {
+        int x=1;
+        while(x<n){
+          x=(x<<1)|1;
+        }
+        return x;
+    }
+}
+
+## Code complexities :- 
+
+1.) Time complexity :- O(logn)
+2.) Space complexity :- O(1)
