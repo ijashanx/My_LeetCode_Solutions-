@@ -1,0 +1,23 @@
+## Code ( java )
+
+class Solution {
+    int total=0;
+    public int subsetXORSum(int[] nums) {
+        calculate(nums,0,0);
+        return total;
+
+    }
+    public void calculate(int[] nums,int index,int xorSum){
+        if(index==nums.length){
+            total+=xorSum;
+            return;
+        }
+        calculate(nums,index+1,xorSum^nums[index]);
+        calculate(nums,index+1,xorSum);
+    }
+}
+
+## Code complexities :- 
+
+1.) Time complexity :- O(2^n)
+2.) Space complexity :- O(n)
